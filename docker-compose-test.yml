@@ -1,0 +1,31 @@
+version: '3.1'
+
+services:
+#  music-bot:
+#    depends_on:
+#      - music-db
+#    build:
+#      context: .
+#    environment:
+#      BOT_NAME: 'test.Good_music_taste_bot'
+#      BOT_TOKEN: '5782512465:AAEoRUKU94W1XxzvK18r71lI6EvSfwYiUBo'
+#      BOT_DB_USERNAME: 'music_db_user'
+#      BOT_DB_PASSWORD: 'music_db_password'
+#    restart: always
+  music-db:
+    image: mysql:8.0.15
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'music_dbd'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'music_db_user'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'music_db_password'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'admin'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3308:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3308'
