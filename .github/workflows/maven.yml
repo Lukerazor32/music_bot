@@ -16,6 +16,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Set up MySQL
+     uses: mirromutth/mysql-action@v1.1
+     with:
+       mysql version: '8.0.15'
+       mysql database: 'music_dbd'
+       mysql root password: 'admin'
+       mysql user: 'music_db_user'
+       mysql password: 'music_db_password'
     - name: Set up JDK 11
       uses: actions/setup-java@v3
       with:
